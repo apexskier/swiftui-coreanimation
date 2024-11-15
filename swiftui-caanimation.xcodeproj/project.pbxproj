@@ -6,13 +6,46 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXContainerItemProxy section */
+		C5A843892CE6CB1A003A1E1A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C5A843602CE68668003A1E1A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C5A843672CE68668003A1E1A;
+			remoteInfo = "swiftui-caanimation";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		C5A843682CE68668003A1E1A /* swiftui-caanimation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "swiftui-caanimation.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C5A843882CE6CB1A003A1E1A /* swiftui-caanimationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "swiftui-caanimationTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		C5A843992CE6CB6D003A1E1A /* Exceptions for "swiftui-caanimation" folder in "swiftui-caanimationTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				AnimationExtensions.swift,
+				AnimationExtensionsTest.swift,
+			);
+			target = C5A843872CE6CB1A003A1E1A /* swiftui-caanimationTests */;
+		};
+		C5A8439A2CE6CB7F003A1E1A /* Exceptions for "swiftui-caanimation" folder in "swiftui-caanimation" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				AnimationExtensionsTest.swift,
+			);
+			target = C5A843672CE68668003A1E1A /* swiftui-caanimation */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		C5A8436A2CE68668003A1E1A /* swiftui-caanimation */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				C5A8439A2CE6CB7F003A1E1A /* Exceptions for "swiftui-caanimation" folder in "swiftui-caanimation" target */,
+				C5A843992CE6CB6D003A1E1A /* Exceptions for "swiftui-caanimation" folder in "swiftui-caanimationTests" target */,
+			);
 			path = "swiftui-caanimation";
 			sourceTree = "<group>";
 		};
@@ -20,6 +53,13 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		C5A843652CE68668003A1E1A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C5A843852CE6CB1A003A1E1A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -41,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				C5A843682CE68668003A1E1A /* swiftui-caanimation.app */,
+				C5A843882CE6CB1A003A1E1A /* swiftui-caanimationTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -70,6 +111,26 @@
 			productReference = C5A843682CE68668003A1E1A /* swiftui-caanimation.app */;
 			productType = "com.apple.product-type.application";
 		};
+		C5A843872CE6CB1A003A1E1A /* swiftui-caanimationTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C5A8438B2CE6CB1A003A1E1A /* Build configuration list for PBXNativeTarget "swiftui-caanimationTests" */;
+			buildPhases = (
+				C5A843842CE6CB1A003A1E1A /* Sources */,
+				C5A843852CE6CB1A003A1E1A /* Frameworks */,
+				C5A843862CE6CB1A003A1E1A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C5A8438A2CE6CB1A003A1E1A /* PBXTargetDependency */,
+			);
+			name = "swiftui-caanimationTests";
+			packageProductDependencies = (
+			);
+			productName = "swiftui-caanimationTests";
+			productReference = C5A843882CE6CB1A003A1E1A /* swiftui-caanimationTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -82,6 +143,10 @@
 				TargetAttributes = {
 					C5A843672CE68668003A1E1A = {
 						CreatedOnToolsVersion = 16.1;
+					};
+					C5A843872CE6CB1A003A1E1A = {
+						CreatedOnToolsVersion = 16.1;
+						LastSwiftMigration = 1610;
 					};
 				};
 			};
@@ -100,12 +165,20 @@
 			projectRoot = "";
 			targets = (
 				C5A843672CE68668003A1E1A /* swiftui-caanimation */,
+				C5A843872CE6CB1A003A1E1A /* swiftui-caanimationTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		C5A843662CE68668003A1E1A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C5A843862CE6CB1A003A1E1A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -122,7 +195,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C5A843842CE6CB1A003A1E1A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C5A8438A2CE6CB1A003A1E1A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C5A843672CE68668003A1E1A /* swiftui-caanimation */;
+			targetProxy = C5A843892CE6CB1A003A1E1A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		C5A843752CE68669003A1E1A /* Debug */ = {
@@ -317,6 +405,56 @@
 			};
 			name = Release;
 		};
+		C5A8438C2CE6CB1A003A1E1A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6D9DLTQJSN;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.camlittle.swiftui-caanimationTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = NO;
+				SDKROOT = xros;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				XROS_DEPLOYMENT_TARGET = 2.1;
+			};
+			name = Debug;
+		};
+		C5A8438D2CE6CB1A003A1E1A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6D9DLTQJSN;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.camlittle.swiftui-caanimationTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = NO;
+				SDKROOT = xros;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				VALIDATE_PRODUCT = YES;
+				XROS_DEPLOYMENT_TARGET = 2.1;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -334,6 +472,15 @@
 			buildConfigurations = (
 				C5A843782CE68669003A1E1A /* Debug */,
 				C5A843792CE68669003A1E1A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C5A8438B2CE6CB1A003A1E1A /* Build configuration list for PBXNativeTarget "swiftui-caanimationTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C5A8438C2CE6CB1A003A1E1A /* Debug */,
+				C5A8438D2CE6CB1A003A1E1A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
