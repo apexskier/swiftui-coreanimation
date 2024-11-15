@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		C5A8439D2CE6D19D003A1E1A /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C5A8439C2CE6D19A003A1E1A /* README.md */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		C5A843892CE6CB1A003A1E1A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -19,6 +23,7 @@
 /* Begin PBXFileReference section */
 		C5A843682CE68668003A1E1A /* swiftui-caanimation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "swiftui-caanimation.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5A843882CE6CB1A003A1E1A /* swiftui-caanimationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "swiftui-caanimationTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C5A8439C2CE6D19A003A1E1A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -72,6 +77,7 @@
 		C5A8435F2CE68668003A1E1A = {
 			isa = PBXGroup;
 			children = (
+				C5A8439C2CE6D19A003A1E1A /* README.md */,
 				C5A8436A2CE68668003A1E1A /* swiftui-caanimation */,
 				C5A843692CE68668003A1E1A /* Products */,
 			);
@@ -175,6 +181,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5A8439D2CE6D19D003A1E1A /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
