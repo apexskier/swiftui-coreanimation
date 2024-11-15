@@ -12,33 +12,36 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
-            Button {
-                value = value > 0.5 ? 0.2 : 0.8
-            } label: {
-                Text("Toggle (no animation)")
-            }
-            Button {
-                withAnimation {
+            Text("Value: \(value)")
+            VStack {
+                Button {
                     value = value > 0.5 ? 0.2 : 0.8
+                } label: {
+                    Text("Toggle (no animation)")
                 }
-            } label: {
-                Text("Toggle (default animation)")
-            }
-            Button {
-                withAnimation(.bouncy) {
-                    value = value > 0.5 ? 0.2 : 0.8
+                Button {
+                    withAnimation {
+                        value = value > 0.5 ? 0.2 : 0.8
+                    }
+                } label: {
+                    Text("Toggle (default animation)")
                 }
-            } label: {
-                Text("Toggle (bouncy)")
-            }
-            Button {
-                withAnimation(.easeInOut) {
-                    value = value > 0.5 ? 0.2 : 0.8
+                Button {
+                    withAnimation(.bouncy) {
+                        value = value > 0.5 ? 0.2 : 0.8
+                    }
+                } label: {
+                    Text("Toggle (bouncy)")
                 }
-            } label: {
-                Text("Toggle (ease in out)")
+                Button {
+                    withAnimation(.easeInOut) {
+                        value = value > 0.5 ? 0.2 : 0.8
+                    }
+                } label: {
+                    Text("Toggle (ease in out)")
+                }
             }
-            CustomSwiftUIView(value: value)
+            CustomSwiftUIView(value: $value)
                 .frame(width: 200, height: 400)
         }
         .padding()
