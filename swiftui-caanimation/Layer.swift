@@ -95,26 +95,20 @@ class CustomLayer: CALayer {
     func update(with transaction: SwiftUI.Transaction, value: Double) {
         CATransaction.begin()
 
-        let fromValue = (presentation() ?? self).value
         let toValue = CGFloat(value)
         self.value = toValue
 
         removeAnimation(forKey: Self.animationKey)
 
         if let caAnimation = transaction.animation?.caAnimation {
-            switch caAnimation {
-            case let caAnimation as CASpringAnimation:
-                // TODO: to fully match SwiftUI's animations, we need to track the velocity of the current animation, if still in progress, and apply that as the initial velocity here. I suspect this will require using the blendDuration proprety of the SwiftUI animation
-                caAnimation.keyPath = Self.nsAnimationKeyPath
-                caAnimation.fromValue = fromValue
-                caAnimation.toValue = toValue
+            caAnimation.keyPath = Self.nsAnimationKeyPath
+            caAnimation.fromValue = (presentation() ?? self).value
+            caAnimation.toValue = toValue
+            if let caAnimation = caAnimation as? CASpringAnimation {
+                // Core Animation will cut off the animation if the duration is not updated
                 caAnimation.duration = caAnimation.settlingDuration
-            case let caAnimation as CABasicAnimation:
-                caAnimation.keyPath = Self.nsAnimationKeyPath
-                caAnimation.fromValue = fromValue
-                caAnimation.toValue = toValue
-            default:
-                fatalError("Unsupported animation type \(caAnimation)")
+
+                // TODO: to fully match SwiftUI's animations, we need to track the velocity of the current animation, if still in progress, and apply that as the initial velocity here. I suspect this will require using the blendDuration proprety of the SwiftUI animation
             }
 
             add(caAnimation, forKey: Self.animationKey)

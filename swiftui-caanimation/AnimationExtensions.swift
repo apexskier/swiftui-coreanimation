@@ -24,7 +24,7 @@ nonisolated(unsafe) let springAnimationRegex =
 #/SpringAnimation\(mass: (?<mass>-?\d+\.\d+), stiffness: (?<stiffness>-?\d+\.\d+), damping: (?<damping>-?\d+\.\d+), initialVelocity: SwiftUI._Velocity<Swift.Double>\(valuePerSecond: (?<initialVelocity>-?\d+\.\d+)\)\)/#
 
 extension Animation {
-    var caAnimation: CAAnimation {
+    var caAnimation: CABasicAnimation {
         do {
             if description == "DefaultAnimation()" {
                 // defaults changed in more recent versions
