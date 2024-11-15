@@ -25,7 +25,11 @@ class CustomPlatformView: PlatformView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    var coordinator: CustomSwiftUIView.Coordinator?
+    var coordinator: CustomSwiftUIView.Coordinator? {
+        didSet {
+            (layer as? CustomLayer)?.coordinator = coordinator
+        }
+    }
 
 #if canImport(UIKit)
     init() {
@@ -34,14 +38,14 @@ class CustomPlatformView: PlatformView {
         self.backgroundColor = .clear
 
         let gestureRecognizer = UITapGestureRecognizer(
-            target: self,
-            action: #selector(Self.handleTap)
+            target: layer,
+            action: #selector(CustomLayer.handleTap)
         )
         self.addGestureRecognizer(gestureRecognizer)
 
         let doubleGestureRecognizer = UITapGestureRecognizer(
-            target: self,
-            action: #selector(Self.handleDoubleTap)
+            target: layer,
+            action: #selector(CustomLayer.handleDoubleTap)
         )
         doubleGestureRecognizer.numberOfTapsRequired = 2
         self.addGestureRecognizer(doubleGestureRecognizer)
@@ -56,14 +60,14 @@ class CustomPlatformView: PlatformView {
         self.wantsLayer = true
 
         let gestureRecognizer = NSClickGestureRecognizer(
-            target: self,
-            action: #selector(Self.handleTap)
+            target: layer,
+            action: #selector(CustomLayer.handleTap)
         )
         self.addGestureRecognizer(gestureRecognizer)
 
         let doubleGestureRecognizer = NSClickGestureRecognizer(
-            target: self,
-            action: #selector(Self.handleDoubleTap)
+            target: layer,
+            action: #selector(CustomLayer.handleDoubleTap)
         )
         doubleGestureRecognizer.numberOfClicksRequired = 2
         self.addGestureRecognizer(doubleGestureRecognizer)
@@ -88,17 +92,4 @@ class CustomPlatformView: PlatformView {
         CustomLayer()
     }
 #endif
-
-    @objc func handleTap(gestureRecognizer: GestureRecognizer) {
-        guard let layer = layer as? CustomLayer, let coordinator else { return }
-        coordinator.parent.value = (layer.presentation() ?? layer).value
-        layer.removeAnimation(forKey: "value")
-    }
-
-    @objc func handleDoubleTap(gestureRecognizer: GestureRecognizer) {
-        guard let layer = layer as? CustomLayer, let coordinator else { return }
-        withAnimation {
-            coordinator.parent.value = (layer.presentation() ?? layer).value > 0.5 ? 0 : 1
-        }
-    }
 }

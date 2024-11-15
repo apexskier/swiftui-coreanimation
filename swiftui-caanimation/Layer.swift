@@ -32,6 +32,8 @@ nonisolated(unsafe) private let fontAttributes: [NSAttributedString.Key: Any] = 
 class CustomLayer: CALayer {
     @NSManaged var value: CGFloat
 
+    var coordinator: CustomSwiftUIView.Coordinator?
+
     private var diameter: CGFloat = 20
 
     override init() {
@@ -121,5 +123,18 @@ class CustomLayer: CALayer {
         CATransaction.commit()
 
         setNeedsDisplay()
+    }
+
+    @objc func handleTap(gestureRecognizer: GestureRecognizer) {
+        guard let coordinator else { return }
+        coordinator.parent.value = (presentation() ?? self).value
+        removeAnimation(forKey: Self.animationKey)
+    }
+
+    @objc func handleDoubleTap(gestureRecognizer: GestureRecognizer) {
+        guard let coordinator else { return }
+        withAnimation {
+            coordinator.parent.value = (presentation() ?? self).value > 0.5 ? 0 : 1
+        }
     }
 }
