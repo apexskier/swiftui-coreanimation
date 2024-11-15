@@ -30,11 +30,11 @@ nonisolated(unsafe) private let fontAttributes: [NSAttributedString.Key: Any] = 
 }()
 
 class CustomLayer: CALayer {
-    @NSManaged var value: CGFloat
+    @NSManaged var value: Double
 
     var coordinator: CustomSwiftUIView.Coordinator?
 
-    private var diameter: CGFloat = 20
+    private var diameter = 20.0
 
     override init() {
         super.init()
@@ -95,15 +95,14 @@ class CustomLayer: CALayer {
     func update(with transaction: SwiftUI.Transaction, value: Double) {
         CATransaction.begin()
 
-        let toValue = CGFloat(value)
-        self.value = toValue
+        self.value = value
 
         removeAnimation(forKey: Self.animationKey)
 
         if let caAnimation = transaction.animation?.caAnimation {
             caAnimation.keyPath = Self.nsAnimationKeyPath
             caAnimation.fromValue = (presentation() ?? self).value
-            caAnimation.toValue = toValue
+            caAnimation.toValue = value
             if let caAnimation = caAnimation as? CASpringAnimation {
                 // Core Animation will cut off the animation if the duration is not updated
                 caAnimation.duration = caAnimation.settlingDuration
