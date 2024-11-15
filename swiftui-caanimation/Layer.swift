@@ -93,11 +93,7 @@ class CustomLayer: CALayer {
     }
 
     func update(with transaction: SwiftUI.Transaction, value: Double) {
-        CATransaction.begin()
-
         self.value = value
-
-        removeAnimation(forKey: Self.animationKey)
 
         if let caAnimation = transaction.animation?.caAnimation {
             caAnimation.keyPath = Self.nsAnimationKeyPath
@@ -112,8 +108,6 @@ class CustomLayer: CALayer {
 
             add(caAnimation, forKey: Self.animationKey)
         }
-
-        CATransaction.commit()
 
         setNeedsDisplay()
     }
