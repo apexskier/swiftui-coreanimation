@@ -68,14 +68,22 @@ extension Animation {
                 case easeInAnimationCubicSolver:
                     caAnimation.timingFunction = .init(name: .easeIn)
                 default:
-                    print("Warning: Bezier animations are probably not working")
-                    // TODO: I don't think this is right.
-                    let caAnimation = CABasicAnimation()
-                    let ax = Float(bezierParameters.ax)!
-                    let ay = Float(bezierParameters.ay)!
                     let bx = Float(bezierParameters.bx)!
                     let by = Float(bezierParameters.by)!
-                    caAnimation.timingFunction = .init(controlPoints: ax, ay, bx, by)
+                    let cx = Float(bezierParameters.cx)!
+                    let cy = Float(bezierParameters.cy)!
+
+                    // thank you Eric Eng!
+                    let pt1 = (
+                        x: cx / 3,
+                        y: cy / 3
+                    )
+                    let pt2 = (
+                        x: (bx + cx) / 3 + pt1.x,
+                        y: (by + cy) / 3 + pt1.y
+                    )
+
+                    caAnimation.timingFunction = .init(controlPoints: pt1.x, pt1.y, pt2.x, pt2.y)
                 }
                 return caAnimation
             }

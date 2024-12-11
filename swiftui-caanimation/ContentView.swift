@@ -40,9 +40,36 @@ struct ContentView: View {
                 } label: {
                     Text("Toggle (ease in out)")
                 }
+                Button {
+                    withAnimation(.timingCurve(0.17, 0.67, 0.96, -0.01)) {
+                        value = value > 0.5 ? 0.2 : 0.8
+                    }
+                } label: {
+                    Text("Toggle (custom curve)")
+                }
             }
-            CustomSwiftUIView(value: $value)
-                .frame(width: 200, height: 400)
+            HStack {
+                let height: CGFloat = 400
+                let d: CGFloat = 20
+                VStack {
+                    Text("SwiftUI").font(.caption)
+                    ZStack {
+                        Rectangle()
+                            .fill(.clear)
+                            .frame(height: height)
+                            .border(.blue)
+                        Circle()
+                            .fill(.red)
+                            .position(y: (value * (height - d)) - ((height / 2) - d))
+                            .frame(width: d, height: d)
+                    }
+                }
+                VStack {
+                    Text("Core Animation").font(.caption)
+                    CustomSwiftUIView(value: $value)
+                        .frame(height: height)
+                }
+            }
         }
         .padding()
     }

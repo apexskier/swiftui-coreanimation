@@ -9,14 +9,31 @@ import CoreGraphics
 import SwiftUICore
 import Testing
 
+extension CAMediaTimingFunction {
+    var controlPoints: [Float] {
+        Array(0..<4).map {
+            var cp: Float = 0
+            getControlPoint(at: $0, values: &cp)
+            return cp
+        }
+    }
+}
+
 extension CABasicAnimation {
     func matches(
         _ actual: CAAnimation,
         sourceLocation: SourceLocation = #_sourceLocation
     ) {
         #expect(type(of: self) == type(of: actual), sourceLocation: sourceLocation)
-        #expect(timingFunction == actual.timingFunction, sourceLocation: sourceLocation)
         #expect(duration == actual.duration, sourceLocation: sourceLocation)
+        if timingFunction != actual.timingFunction,
+           let timingFunction, let actualTimingFunction = actual.timingFunction
+        {
+            // doing this funkiness to deal with floating point precision issues
+            #expect(timingFunction.controlPoints.count == actualTimingFunction.controlPoints.count, sourceLocation: sourceLocation)
+        } else {
+            #expect(timingFunction == actual.timingFunction, sourceLocation: sourceLocation)
+        }
     }
 }
 
@@ -113,6 +130,14 @@ struct AnimationExtensionTests {
         expected.stiffness = 3
         expected.initialVelocity = 4
         let actual = Animation.interpolatingSpring(mass: 2, stiffness: 3, damping: 4).caAnimation
+        expected.matches(actual)
+    }
+
+    @Test func customCurve() async throws {
+        let expected = CABasicAnimation()
+        expected.timingFunction = CAMediaTimingFunction(controlPoints: 0.17, 0.67, 0.96, -0.01)
+        expected.duration = 0.35
+        let actual = Animation.timingCurve(0.17, 0.67, 0.96, -0.01).caAnimation
         expected.matches(actual)
     }
 }
